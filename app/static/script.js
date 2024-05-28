@@ -10,15 +10,21 @@ let fullText = '';
 let wpmData = [];
 let chart;
 
-const dictionary = [
-    "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", 
-    "honeydew", "kiwi", "lemon", "mango", "nectarine", "orange", "papaya", 
-    "quince", "raspberry", "strawberry", "tangerine", "ugli", "vanilla", 
-    "watermelon", "xigua", "yellow", "zucchini"
+const commonWords = [
+    "the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", 
+    "not", "on", "with", "he", "as", "you", "do", "at", "this", "but", "his", 
+    "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", 
+    "one", "all", "would", "there", "their", "what", "so", "up", "out", "if", 
+    "about", "who", "get", "which", "go", "me", "when", "make", "can", "like", 
+    "time", "no", "just", "him", "know", "take", "person", "into", "year", 
+    "your", "good", "some", "could", "them", "see", "other", "than", "then", 
+    "now", "look", "only", "come", "its", "over", "think", "also", "back", 
+    "after", "use", "two", "how", "our", "work", "first", "well", "way", "even", 
+    "new", "want", "because", "any", "these", "give", "day", "most", "us"
 ];
 
 function getRandomWords(wordCount) {
-    const shuffled = dictionary.sort(() => 0.5 - Math.random());
+    const shuffled = commonWords.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, wordCount).join(' ');
 }
 
@@ -39,6 +45,9 @@ userInput.addEventListener('focus', () => {
 });
 
 userInput.addEventListener('input', () => {
+    if (!startTime) {
+        startTime = new Date();
+    }
     const currentTime = new Date();
     const elapsedTime = (currentTime - startTime) / 1000;
 
@@ -83,14 +92,14 @@ function updateTextColor(typedText, fullText) {
     for (let i = 0; i < fullText.length; i++) {
         if (i < typedText.length) {
             if (typedText[i] === fullText[i]) {
-                html += `<span style="color:blue;">${fullText[i]}</span>`;
+                html += `<span class="blue">${fullText[i]}</span>`;
             } else {
-                html += `<span style="color:red;">${fullText[i]}</span>`;
+                html += `<span class="red">${fullText[i]}</span>`;
             }
         } else if (i === typedText.length) {
-            html += `<span style="color:black;">${fullText[i]}</span>`;
+            html += `<span class="black">${fullText[i]}</span>`;
         } else {
-            html += `<span style="color:black;">${fullText[i]}</span>`;
+            html += `<span class="black">${fullText[i]}</span>`;
         }
     }
     testText.innerHTML = html;
