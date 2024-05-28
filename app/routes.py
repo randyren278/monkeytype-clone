@@ -1,8 +1,7 @@
-from flask import render_template
-from app import create_app
+from flask import render_template, Blueprint
 
-app = create_app()
+main = Blueprint('main', __name__)
 
-@app.route('/')
+@main.route('/')
 def index():
     return render_template('index.html')
