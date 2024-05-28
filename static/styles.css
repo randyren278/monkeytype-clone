@@ -1,0 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#typing-test {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
