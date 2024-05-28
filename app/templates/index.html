@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monkeytype Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="typing-test">
+        <p id="test-text"></p>
+        <input type="text" id="user-input" autofocus>
+        <p id="result">WPM: <span id="wpm">0</span></p>
+        <button id="restart-btn" onclick="restartTest()">Restart</button>
+        <div>
+            <button onclick="startTest(10)">10 Words</button>
+            <button onclick="startTest(25)">25 Words</button>
+            <button onclick="startTest(50)">50 Words</button>
+        </div>
+        <canvas id="wpmChart" width="400" height="200"></canvas>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+/* General reset and basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f7;
+    color: #333;
+    margin: 0;
+}
+
+/* Main container styling */
+#typing-test {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    transition: all 0.3s ease-in-out;
+}
+
+#typing-test:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Test text styling */
+#test-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+    letter-spacing: 0.05em;
+}
+
+/* Input box styling */
+#user-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+#user-input:focus {
+    border-color: #0071e3;
+    outline: none;
+}
+
+/* Result display styling */
+#result {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #0071e3;
+}
+
+/* Button styling */
+button {
+    padding: 15px 30px;
+    margin: 5px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    background-color: #0071e3;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #005bb5;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #003e7e;
+    transform: translateY(1px);
+}
+
+/* Canvas styling for the chart */
+canvas {
+    margin-top: 30px;
+}
+
+/* Additional styling for visual feedback */
+span {
+    font-weight: bold;
+}
+
+.blue {
+    color: #0071e3;
+}
+
+.red {
+    color: #ff3b30;
+}
+
+.black {
+    color: #333;
+}
