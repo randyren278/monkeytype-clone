@@ -9,6 +9,7 @@ let startTime;
 let fullText = '';
 let wpmData = [];
 let chart;
+let currentWordCount = 10; // Default to 10 words
 
 const commonWords = [
     "the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", 
@@ -29,6 +30,7 @@ function getRandomWords(wordCount) {
 }
 
 function startTest(wordCount) {
+    currentWordCount = wordCount;
     fullText = getRandomWords(wordCount);
     testText.innerText = fullText;
     restartTest();
@@ -54,22 +56,24 @@ userInput.addEventListener('input', () => {
     const typedText = userInput.value;
     const wordsTyped = typedText.trim().split(/\s+/).length;
     const wpm = (wordsTyped / elapsedTime) * 60;
-    wpmDisplay.innerText = Math.round(wpm);
 
     updateTextColor(typedText, fullText);
 
     if (typedText === fullText) {
         result.innerText = `Congratulations! Your WPM is ${Math.round(wpm)}.`;
         userInput.disabled = true;
+        wpmDisplay.innerText = Math.round(wpm);
         displayChart();
     }
 });
 
 function restartTest() {
+    fullText = getRandomWords(currentWordCount); // Re-randomize the text
+    testText.innerText = fullText;
     userInput.value = '';
     userInput.disabled = false;
-    result.innerText = 'WPM: 0';
-    wpmDisplay.innerText = '0';
+    result.innerText = '';
+    wpmDisplay.innerText = '';
     startTime = null;
     wpmData = [];
     userInput.focus();

@@ -8,6 +8,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" id="logo">
+        <h1 id="site-title">randy-types</h1>
+    </header>
+    
     <div id="typing-test">
         <p id="test-text"></p>
         <input type="text" id="user-input" autofocus>
@@ -23,3 +28,4 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
