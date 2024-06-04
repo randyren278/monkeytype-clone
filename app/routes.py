@@ -1,9 +1,10 @@
-from flask import Blueprint, render_template
+from app import app
+from flask import render_template
 
-main = Blueprint('main', __name__)
-print("Registering route...")
+@app.route('/')
+def home():
+    return render_template('home.html')
 
-@main.route('/')
-def index():
-    print("Rendering index...")
+@app.route('/typing-test')
+def typing_test():
     return render_template('index.html')
