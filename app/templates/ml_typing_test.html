@@ -22,6 +22,23 @@
         <button id="ml-restart-btn" onclick="restartMLTest()">Restart</button>
         <canvas id="ml-wpmChart" width="400" height="200"></canvas>
     </div>
+    
+    <!-- Loading Page -->
+    <div id="loading-screen" style="display: none;">
+        <h2>Loading your personalized test...</h2>
+    </div>
+
+    <!-- Leaderboard and Customized Test -->
+    <div id="leaderboard-section" style="display: none;">
+        <div id="leaderboard">
+            <h3>Leaderboard: Fastest to Slowest Words</h3>
+            <div id="leaderboard-content" style="overflow-y: scroll; height: 300px;"></div>
+        </div>
+        <button id="customized-test-btn" onclick="startCustomizedTest()">Start Customized Test</button>
+        <button id="continue-ml-btn" style="display: none;" onclick="continueMLTest()">Continue Practice</button>
+        <button id="restart-btn" onclick="restartMLTest()">Restart</button>
+    </div>
+
     <script src="{{ url_for('static', filename='ml_script.js') }}"></script>
 </body>
 </html>
