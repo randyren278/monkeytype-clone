@@ -9,8 +9,10 @@
 </head>
 <body>
     <header>
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" id="logo">
-        <h1 id="site-title">randy-types</h1>
+        <a href="/" id="site-link">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" id="logo">
+            <h1 id="site-title">randy-types</h1>
+        </a>
     </header>
     
     <div id="typing-test">
@@ -28,4 +30,3 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-
