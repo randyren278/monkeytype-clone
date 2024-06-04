@@ -8,3 +8,7 @@ def home():
 @app.route('/typing-test')
 def typing_test():
     return render_template('index.html')
+
+@app.route('/ml-typing-test')
+def ml_typing_test():
+    return render_template('ml_typing_test.html')
