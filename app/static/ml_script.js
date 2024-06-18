@@ -8,7 +8,6 @@ const leaderboardSection = document.getElementById('leaderboard-section');
 const leaderboardContent = document.getElementById('leaderboard-content');
 const customizedTestBtn = document.getElementById('customized-test-btn');
 const continueMLBtn = document.getElementById('continue-ml-btn');
-const restartBtn = document.getElementById('restart-btn');
 
 let mlStartTime;
 let mlFullText = '';
@@ -31,14 +30,19 @@ const mlCommonWords = [
 ];
 
 function getMLRandomWords(wordCount) {
+    console.log("Generating random words");
     const shuffled = mlCommonWords.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, wordCount).join(' ');
+    const words = shuffled.slice(0, wordCount).join(' ');
+    console.log("Generated words:", words);
+    return words;
 }
 
 function startMLTest(wordCount) {
+    console.log("Starting ML Test with", wordCount, "words");
     mlCurrentWordCount = wordCount;
     mlFullText = getMLRandomWords(wordCount);
     mlTestText.innerText = mlFullText;
+    console.log("Test text set:", mlFullText);
     restartMLTest();
     if (mlChart) {
         mlChart.destroy();
@@ -84,11 +88,13 @@ function showLoadingScreen() {
         loadingScreen.style.display = 'none';
         displayLeaderboard();
         leaderboardSection.style.display = 'block';
+        continueMLBtn.style.display = 'block'; // Show continue button
     }, 3000); // Adjust this delay as needed
 }
 
 function displayLeaderboard() {
     const sortedWordTimings = mlWordTimings.sort((a, b) => a.time - b.time);
+    console.log("Sorted word timings:", sortedWordTimings);
     leaderboardContent.innerHTML = sortedWordTimings.map(wordTiming => `<p>${wordTiming.word}: ${wordTiming.time.toFixed(2)}s</p>`).join('');
 }
 
@@ -102,7 +108,7 @@ function startCustomizedTest() {
     })
     .then(response => response.json())
     .then(data => {
-        mlFullText = data.hardest_words.slice(0, 25).join(' ');
+        mlFullText = data.hardest_words.slice(0, 50).join(' ');
         mlTestText.innerText = mlFullText;
         mlUserInput.value = '';
         mlUserInput.disabled = false;
@@ -121,24 +127,12 @@ function startCustomizedTest() {
             mlChart.destroy();
             mlChart = null;
         }
-
-        // Show the continue button after the customized test
-        continueMLBtn.style.display = 'block';
     })
     .catch(error => console.error('Error:', error));
 }
 
 function continueMLTest() {
-    mlFullText = getMLRandomWords(25); // New 25-word test
-    mlTestText.innerText = mlFullText;
-    mlUserInput.value = '';
-    mlUserInput.disabled = false;
-    mlResult.innerText = '';
-    mlWpmDisplay.innerText = '';
-    mlStartTime = null;
-    mlWpmData = [];
-    mlUserInput.focus();
-    updateMLTextColor('', mlFullText);
+    startMLTest(50); // Start a new ML test with 50 words
     leaderboardSection.style.display = 'none';
     document.getElementById('ml-typing-test').style.display = 'block';
 
@@ -150,6 +144,7 @@ function continueMLTest() {
 }
 
 function restartMLTest() {
+    console.log("Restarting ML Test");
     mlFullText = getMLRandomWords(mlCurrentWordCount); // Re-randomize the text
     mlTestText.innerText = mlFullText;
     mlUserInput.value = '';
@@ -254,10 +249,7 @@ function sendMLData() {
         body: JSON.stringify(mlWordTimings)
     })
     .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        customizedTestBtn.style.display = 'block'; // Show customized test button after sending data
-    })
+    .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
 }
 

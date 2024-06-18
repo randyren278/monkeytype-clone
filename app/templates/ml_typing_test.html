@@ -34,9 +34,11 @@
             <h3>Leaderboard: Fastest to Slowest Words</h3>
             <div id="leaderboard-content" style="overflow-y: scroll; height: 300px;"></div>
         </div>
-        <button id="customized-test-btn" onclick="startCustomizedTest()">Start Customized Test</button>
-        <button id="continue-ml-btn" style="display: none;" onclick="continueMLTest()">Continue Practice</button>
-        <button id="restart-btn" onclick="restartMLTest()">Restart</button>
+        <div id="button-container">
+            <button id="customized-test-btn" onclick="startCustomizedTest()">Start Customized Test</button>
+            <button id="continue-ml-btn" style="display: none;" onclick="continueMLTest()">Continue Practice</button>
+            <button id="restart-btn" onclick="restartMLTest()">Restart</button>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='ml_script.js') }}"></script>
