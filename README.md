@@ -1,6 +1,3 @@
-
-Sure! Here's an updated README that includes the machine learning aspect of your project:
-
 Monkeytype Clone
 A web-based typing test application that simulates the functionality of Monkeytype, designed to measure typing speed in Words Per Minute (WPM). The application includes options for tests with 10, 25, and 50 words, dynamic text color feedback, a real-time graph displaying WPM over time, and machine learning analysis to personalize the typing experience.
 
